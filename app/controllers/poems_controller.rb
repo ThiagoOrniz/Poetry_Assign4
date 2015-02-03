@@ -1,7 +1,17 @@
 class PoemsController < ApplicationController
 
 	def index
-		@poems = Poem.all
+		@allPoems = Poem.all
+
+		@poems = Array.new()
+
+		@allPoems.each do |poem|
+		 	if poem.published
+		 		@poems << poem
+		 	end
+
+		end
+		@poems
 	end
 
 	def show
